@@ -9,20 +9,23 @@ class controller_movies{
     private $model;
     private $title;
 
-function __construct()
-{
-    $this->view= new view_movies();
-    $this ->model= new model_movies();
-    $this ->title= "MasPeli";
+    function __construct()
+    {
+        $this->view= new view_movies();
+        $this ->model= new model_movies();
+        $this ->title= "MasPeli";
+    }
 
+    function home(){
+             $genders= $this->model-> get_genders();
+             $this->view-> mostrar($this->title, $genders);
 
-}
-
-function home(){
-    $genders= $this->model-> get_genders();
-    $this->view-> mostrar($this->title, $genders);
-
-}
+    }
+    function moviesList()
+    {
+        $movies = $this->model->get_all();
+        $this->view->moviesList($movies);
+    }
 
 }
 

@@ -22,11 +22,12 @@
         
     
         <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-body rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-White); --bs-nav-pills-link-active-color: var(--bs-white); --bs-nav-pills-link-active-bg: var(--bs-white);">
+            
             <li class="nav-item" role="presentation">
-            <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
+            <a class="nav-link rounded-5" href="{$URL_BASE}/home" id="contact-tab2"  role="tab" >home</a>
             </li>
             <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-5" id="profile-tab2"  type="button" role="tab" >Peliculas</button>
+            <a class="nav-link rounded-5" href="{$URL_BASE}/movieList" id="contact-tab2"  role="tab" >peliculas</a>
             </li>
             <li class="nav-item" role="presentation">
             <button class="nav-link rounded-5" id="contact-tab2" type="button" role="tab" >Contact</button>
@@ -34,7 +35,7 @@
             <li class="nav-item" role="presentation">
             <button class="nav-link rounded-5" id="contact-tab2" type="button" role="tab" >login</button>
             </li>
-
+            
         </ul>
         </div>
         </nav>
