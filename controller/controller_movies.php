@@ -17,8 +17,11 @@ class controller_movies{
     }
 
     function home(){
+
         $genders= $this->model-> get_genders();
-        $this->view-> mostrar($this->title, $genders);
+        $movies= $this->model->get_movies();
+        $this->view-> mostrar($this->title, $genders, $movies);
+
 
     }
     function moviesList()
@@ -27,7 +30,7 @@ class controller_movies{
         $this->view->moviesList($movies);
     }
     function delete_movie(){
-        
+
     }
 
 }
