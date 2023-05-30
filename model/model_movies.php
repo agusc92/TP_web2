@@ -32,7 +32,7 @@ function get_all(){
 }
 function delete_movie($id){
     //borra una pelicula
-    $sentense = $this->db->prepare("DELETE * FROM peliculas WHERE peliculas.id_movies = ?");
+    $sentense = $this->db->prepare("DELETE FROM movies WHERE movies.id_movie = ?");
     $sentense->execute([$id]);
 }
 

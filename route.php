@@ -13,7 +13,7 @@ switch($parteURL[0]){
         $controller->moviesList();
         break;
     case 'delete':
-        $controller->delete_movie();
+        $controller->delete_movie($parteURL[1]);
         break;
     default:
         $controller->home();

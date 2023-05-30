@@ -29,8 +29,9 @@ class controller_movies{
         $movies = $this->model->get_all();
         $this->view->moviesList($movies);
     }
-    function delete_movie(){
-
+    function delete_movie($id){
+        $this->model->delete_movie($id);
+        header('location:'.URL_BASE.'/movieList');
     }
 
 }
