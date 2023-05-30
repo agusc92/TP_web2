@@ -17,14 +17,17 @@ class controller_movies{
     }
 
     function home(){
-             $genders= $this->model-> get_genders();
-             $this->view-> mostrar($this->title, $genders);
+        $genders= $this->model-> get_genders();
+        $this->view-> mostrar($this->title, $genders);
 
     }
     function moviesList()
     {
         $movies = $this->model->get_all();
         $this->view->moviesList($movies);
+    }
+    function delete_movie(){
+        
     }
 
 }
