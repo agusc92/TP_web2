@@ -15,6 +15,9 @@ switch($parteURL[0]){
     case 'delete':
         $controller->delete_movie($parteURL[1]);
         break;
+    case 'movieXgender':
+        $controller->movieXgender($parteURL[1]);
+        break;
     default:
         $controller->home();
     }

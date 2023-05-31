@@ -12,7 +12,7 @@
             <ul class="list-group">
             
             {foreach from=$genders item=gender}
-                <li class="list-group-item bg-dark text-white">{$gender->name_gender} <i class="bi bi-pencil-square"></i> <i class="bi bi-archive"></i></li>
+                <li class="list-group-item bg-dark text-white"><a href="{$URL_BASE}/movieXgender/{$gender->id_gender}">{$gender->name_gender} <i class="bi bi-pencil-square"></i> <i class="bi bi-archive"></i></a></li>
             {/foreach}
             </ul>
             </div>

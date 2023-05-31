@@ -33,7 +33,16 @@ class controller_movies{
         $this->model->delete_movie($id);
         header('location:'.URL_BASE.'/movieList');
     }
-
+    function movieXgender($id){
+        $movies = $this->model->get_all();
+        $show;
+        foreach($movies as $movie){
+            if($movie->id_gender == $id){
+                $show[]=$movie;
+            }
+        }
+        $this->view->movieXgender($show);
+    }
 }
 
 
