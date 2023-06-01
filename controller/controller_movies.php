@@ -41,7 +41,11 @@ class controller_movies{
                 $show[]=$movie;
             }
         }
-        $this->view->movieXgender($show);
+        //$this->view->movieXgender($show);
+        // foreach($movies as $movie){
+        //     $movie->nuevo_valor = 5;
+        // }
+        // print_r($movies);
     }
 }
 
