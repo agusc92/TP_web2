@@ -35,5 +35,6 @@ function delete_movie($id){
     $sentense = $this->db->prepare("DELETE FROM movies WHERE movies.id_movie = ?");
     $sentense->execute([$id]);
 }
+
 }
 ?>
