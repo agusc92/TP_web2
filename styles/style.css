@@ -33,3 +33,7 @@
   .hover-effect:hover {
     opacity: 0.5;
   }
+  a,label{
+    text-decoration: none;
+    color:white;
+  }

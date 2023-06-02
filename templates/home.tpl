@@ -29,7 +29,7 @@
         {foreach from=$movies item=movie}
         <div class="col">
           <div class="card">
-            <img src={$movie->image}" class="card-img-center " alt="...">
+            <img src={$movie->movie_image}" class="card-img-center " alt="...">
            
           </div>
         </div>

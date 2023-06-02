@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-3 ">{$movie->movie_name}</div>
             <div class="col-3 ">{$movie->name_gender}</div>
-            <div class="col-2 ">{$movie->date}</div>
+            <div class="col-2 ">{$movie->movie_date}</div>
             <a class="col-2 " href="{$URL_BASE}/delete/{$movie->id_movie}">eliminar</a>
             <a class="col-2 " href="#">editar</a>
           </div>

@@ -35,6 +35,12 @@ function delete_movie($id){
     $sentense = $this->db->prepare("DELETE FROM movies WHERE movies.id_movie = ?");
     $sentense->execute([$id]);
 }
-
+function add_movie($datos){
+    $sentense = $this->db->prepare('INSERT INTO movies (movie_name,'."movie_image".',id_gender,'."movie_date".',synopsis) VALUES (?,?,?,?,?)');
+    print_r($datos);
+    
+    $sentense->execute($datos);
+    header('location:'.URL_BASE.'/movieList');
+}
 }
 ?>
