@@ -17,12 +17,9 @@ class controller_movies{
     }
 
     function home(){
-
         $genders= $this->model-> get_genders();
         $movies= $this->model->get_movies();
         $this->view-> mostrar($this->title, $genders, $movies);
-
-
     }
     function moviesList()
     {
@@ -42,6 +39,14 @@ class controller_movies{
             }
         }
         $this->view->movieXgender($show);
+    }
+    function prepare_add_movie(){
+        $genders = $this->model->get_genders();
+        $this->view->prepare_add_movie($genders);
+    }
+    function add_movie($datos){
+       $movie=[$datos['movie_name'],$datos['image'],$datos['id_gender'],$datos['date'],$datos['synopsis']];
+        $this->model->add_movie($movie);
     }
 }
 

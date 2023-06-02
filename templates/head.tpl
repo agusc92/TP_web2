@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <title>{$title}</title>
 </head>
-<body>
+<body class="bg-dark">
     <header>
     <div class="container-fluid">
     <div class="row">
@@ -25,16 +25,16 @@
         <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-body rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-White); --bs-nav-pills-link-active-color: var(--bs-white); --bs-nav-pills-link-active-bg: var(--bs-white);">
             
             <li class="nav-item" role="presentation">
-            <a class="nav-link rounded-5" href="{$URL_BASE}/home" id="contact-tab2"  role="tab" >home</a>
+            <a class="nav-link rounded-5" href="{$URL_BASE}/home">home</a>
             </li>
             <li class="nav-item" role="presentation">
-            <a class="nav-link rounded-5" href="{$URL_BASE}/movieList" id="contact-tab2"  role="tab" >peliculas</a>
+            <a class="nav-link rounded-5" href="{$URL_BASE}/movieList"  >peliculas</a>
             </li>
             <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-5" id="contact-tab2" type="button" role="tab" >Contact</button>
+            <a class="nav-link rounded-5" href="{$URL_BASE}/add"  >agregar</a>
             </li>
             <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-5" id="contact-tab2" type="button" role="tab" >login</button>
+            <button class="nav-link rounded-5"   >login</button>
             </li>
             
         </ul>

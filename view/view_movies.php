@@ -25,6 +25,14 @@ class view_movies
         $this->smarty->assign('movies',$show);
         $this->smarty->display('templates/movieXgender.tpl');
     }
+    function prepare_add_movie($genders){
+        $this->smarty->assign('URL_BASE',URL_BASE);
+        $this->smarty->assign('title', "Maspelis");
+        $this->smarty->assign('genders',$genders);
+        $this->smarty->display('templates/prepare_add_movie.tpl');
+
+        
+    }
 }
 
 ?>
