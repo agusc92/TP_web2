@@ -18,8 +18,9 @@
             <div class="col-3 "><a href="{$URL_BASE}/movieDetail/{$movie->id_movie}">{$movie->movie_name}</a></div>
             <div class="col-3 ">{$movie->name_gender}</div>
             <div class="col-2 ">{$movie->movie_date}</div>
-            <a class="col-2 " href="{$URL_BASE}/delete/{$movie->id_movie}">eliminar</a>
-            <a class="col-2 " href="#">editar</a>
+            <div class="col-2 ">{$movie->amount}</div>
+            <a class="col-1 " href="{$URL_BASE}/delete/{$movie->id_movie}">eliminar</a>
+            <a class="col-1 " href="{$URL_BASE}/prepare_edit/{$movie->id_movie}">editar</a>
           </div>
         </li>
         {/foreach}

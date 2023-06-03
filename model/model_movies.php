@@ -52,5 +52,20 @@ function add_movie($datos){
     $sentense->execute($datos);
     header('location:'.URL_BASE.'/movieList');
 }
+
+function edit_movie($movie){
+    $sentense = $this->db->prepare('UPDATE movies SET movie_name=?,movie_image=?,id_gender=?,movie_date=?,synopsis=? WHERE id_movie = ?');
+    $sentense->execute($movie);
+}
+function get_movie($id){
+    $sentense = $this->db->prepare("SELECT * FROM movies WHERE id_movie = ?");
+    $sentense->execute([$id]);
+    return $sentense->fetch(PDO::FETCH_OBJ);
+}
+function gender_update($genero,$id){
+    //gace un update en la tabla generos con el resultado de la funcion contar como parametro
+    $consulta = $this->db->prepare("UPDATE genders SET amount = ? WHERE id_gender = ?");
+    $consulta->execute([$genero,$id]);
+}
 }
 ?>

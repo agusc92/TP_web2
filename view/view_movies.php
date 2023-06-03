@@ -41,6 +41,12 @@ class view_movies
 
         
     }
+    function prepare_edit_movie($movie,$genders){
+        $this->smarty->assign('URL_BASE',URL_BASE);
+        $this->smarty->assign('genders',$genders);
+        $this->smarty->assign('movie',$movie);
+        $this->smarty->display('templates/prepare_edit_movie.tpl');
+    }
 }
 
 ?>

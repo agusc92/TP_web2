@@ -33,6 +33,12 @@ switch($parteURL[0]){
     case 'add_confirm':
             $controller_movies->add_movie($_POST);
             break;
+    case 'prepare_edit':
+        $controller_movies->prepare_edit_movie($parteURL[1]);
+        break;
+    case 'edit_confirm':
+        $controller_movies->edit_movie($_POST);
+        break;
     default:
         $controller_movies->home();
     }
