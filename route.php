@@ -1,9 +1,11 @@
 <?php
 include 'model/model_movies.php';
 include 'controller/controller_movies.php';
+include 'controller/controller_genders.php';
 define('URL_BASE', 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']));
 
-$controller= new controller_movies();
+$controller_movies= new controller_movies();
+$controller_genders= new controller_genders();
 
 $parteURL= explode("/", $_GET["action"]);
 
@@ -11,25 +13,28 @@ $parteURL= explode("/", $_GET["action"]);
 switch($parteURL[0]){
     
     case 'movieList':
-        $controller->moviesList();
+        $controller_movies->moviesList();
+        break;
+    case 'movieDetail':
+        $controller_movies->movieDetail($parteURL[1]);
+        break;
+    case'gendersList':
+        $controller_genders->gendersList();
         break;
     case 'delete':
-        $controller->delete_movie($parteURL[1]);
+        $controller_movies->delete_movie($parteURL[1]);
         break;
-<<<<<<< HEAD
-=======
     case 'movieXgender':
-        $controller->movieXgender($parteURL[1]);
+        $controller_movies->movieXgender($parteURL[1]);
         break;
     case 'add':
-        $controller->prepare_add_movie();
+        $controller_movies->prepare_add_movie();
         break;
-        case 'add_confirm':
-            $controller->add_movie($_POST);
+    case 'add_confirm':
+            $controller_movies->add_movie($_POST);
             break;
->>>>>>> agus
     default:
-        $controller->home();
+        $controller_movies->home();
     }
     
 ?>

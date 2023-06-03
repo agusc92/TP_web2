@@ -26,6 +26,14 @@ class controller_movies{
         $movies = $this->model->get_all();
         $this->view->moviesList($movies);
     }
+
+    function movieDetail($id){
+        $movie=$this->model->get_movieDetail($id);
+        $this->view->show_movieDetail($movie);
+      
+    }
+
+
     function delete_movie($id){
         $this->model->delete_movie($id);
         header('location:'.URL_BASE.'/movieList');

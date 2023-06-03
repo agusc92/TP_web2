@@ -20,6 +20,14 @@ class view_movies
         $this->smarty->assign('movies',$movies);
         $this->smarty->display('templates/moviesList.tpl');
     }
+    function show_movieDetail($movie){
+        $this->smarty->assign('URL_BASE',URL_BASE);
+        $this->smarty->assign('movie',$movie);
+        $this->smarty->display('templates/movieDetail.tpl');
+    }
+
+
+
     function movieXgender($show){
         $this->smarty->assign('URL_BASE',URL_BASE);
         $this->smarty->assign('movies',$show);

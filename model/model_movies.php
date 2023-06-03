@@ -23,6 +23,8 @@ function get_movies(){
     $sentense = $this->db->prepare("SELECT * FROM movies");
     $sentense->execute();
     return $sentense->fetchAll(PDO::FETCH_OBJ);
+
+
 }
 function get_all(){
     //trae las tablas de genero y peliculas unidas
@@ -30,6 +32,14 @@ function get_all(){
     $sentense->execute();
     return $sentense->fetchAll(PDO::FETCH_OBJ);
 }
+function get_movieDetail($id){
+    echo $id;
+    $sentense= $this->db->prepare("SELECT * FROM `movies`JOIN `genders` ON genders.id_gender = movies.id_gender WHERE movies.id_movie=?");
+    $sentense ->execute([$id]);
+    return $sentense->fetchAll(PDO::FETCH_OBJ);
+}
+
+
 function delete_movie($id){
     //borra una pelicula
     $sentense = $this->db->prepare("DELETE FROM movies WHERE movies.id_movie = ?");

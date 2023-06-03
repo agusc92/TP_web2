@@ -31,6 +31,9 @@
             <a class="nav-link rounded-5" href="{$URL_BASE}/movieList"  >peliculas</a>
             </li>
             <li class="nav-item" role="presentation">
+            <a class="nav-link rounded-5" href="{$URL_BASE}/gendersList"  >generos</a>
+            </li>
+            <li class="nav-item" role="presentation">
             <a class="nav-link rounded-5" href="{$URL_BASE}/add"  >agregar</a>
             </li>
             <li class="nav-item" role="presentation">
