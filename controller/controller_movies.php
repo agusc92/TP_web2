@@ -42,7 +42,7 @@ class controller_movies{
     }
     function movieXgender($id){
         $movies = $this->model->get_all();
-        $show;
+        $show=[];
         foreach($movies as $movie){
             if($movie->id_gender == $id){
                 $show[]=$movie;

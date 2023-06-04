@@ -5,21 +5,21 @@
 
     <div class="row">
       <!-- Lateral con lista de películas -->
-        <div class="col-3 bg-dark mt-2">
+        <div class="col-3 bg-dark mt-4">
         <h3 class="text-bold text-white">Categorias</h3>
             <div class="container mt-4">
             
             <ul class="list-group">
             
             {foreach from=$genders item=gender}
-                <li class="list-group-item bg-dark text-white">{$gender->name_gender} <i class="bi bi-pencil-square"></i> <i class="bi bi-archive"></i></li>
+                <li class="list-group-item bg-dark text-white">{$gender->name_gender} ({$gender->amount})</li>
             {/foreach}
             </ul>
             </div>
         </div>
       
       <!-- Galería de previsualización de películas -->
-        <div class="col-9 mt-2">
+        <div class="col-9 mt-4">
         <h3 class="text-bold text-white mg-5px" >Ultimas agregadas</h3>
         
         

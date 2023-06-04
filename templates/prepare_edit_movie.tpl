@@ -1,7 +1,7 @@
 {include file="head.tpl"}
 <div class="container mt-5 bg-dark">
-  <div class="row justify-content-center">
-  <h3 class="text-bold text-white text-center">Agregar pelicula</h3>
+  <div class="row justify-content-center ">
+  <h3 class="text-bold text-white text-center">Edita pelicula</h3>
     <div class="col-6">
       <form method="post" action="{$URL_BASE}/edit_confirm">
         <div class="mb-3">
@@ -34,7 +34,7 @@
         </div>
         <input type="hidden" name="movie_id" value="{$movie->id_movie}"></input>
         <input type="hidden" name="old_gender" value="{$movie->id_gender}"></input>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-danger">Enviar</button>
       </form>
     </div>
   </div>

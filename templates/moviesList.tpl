@@ -1,11 +1,11 @@
 {include file="head.tpl"}
 <div class="container-fluid bg-dark d-flex justify-content-center">
-<div class="col-10 bg-dark mt-2 ">
+<div class="col-10 bg-dark mt-3 ">
 <h3 class="text-bold text-white text-center">Peliculas</h3>
-    <div class="container mt-5 ">
+    <div class="container mt-4 ">
     
     <ul class="list-group ">
-    <li class="list-group-item bg-dark text-white ">
+    <li class="list-group-item bg-danger text-white ">
           <div class="row">
             <div class="col-3">nombre</div>
             <div class="col-3">genero</div>
@@ -26,7 +26,14 @@
         {/foreach}
         
     </ul>
+  
     </div>
+
+    <div class="container mb=2">
+    <button type="button" class="btn btn-danger"> <a href="{$URL_BASE}/add"> Agregar Pelicula</a></button>
+    </div>
+
+    
 </div>
 
 </div>

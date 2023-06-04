@@ -33,7 +33,7 @@ function get_all(){
     return $sentense->fetchAll(PDO::FETCH_OBJ);
 }
 function get_movieDetail($id){
-    echo $id;
+
     $sentense= $this->db->prepare("SELECT * FROM `movies`JOIN `genders` ON genders.id_gender = movies.id_gender WHERE movies.id_movie=?");
     $sentense ->execute([$id]);
     return $sentense->fetchAll(PDO::FETCH_OBJ);

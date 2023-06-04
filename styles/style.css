@@ -32,8 +32,13 @@
   }
   .hover-effect:hover {
     opacity: 0.5;
+    color: black;
   }
-  a,label{
+  a,label, li{
     text-decoration: none;
     color:white;
+  }
+
+  h1{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
