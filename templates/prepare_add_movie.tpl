@@ -29,7 +29,7 @@
           <textarea class="form-control" id="synopsis" name="synopsis" placeholder="Una breve sinopsis de la pelicula"></textarea>
         </div>
         
-        <button type="submit" class="btn btn-danger">Agregar</button>
+        <button type="submit" class="btn btn-light">Agregar</button>
       </form>
     </div>
   </div>

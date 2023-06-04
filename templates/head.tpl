@@ -21,7 +21,7 @@
     <div <div class="col-7">
         
     
-        <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-danger rounded-5 shadow-sm text-light text-bold" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-White); --bs-nav-pills-link-active-color: var(--bs-white); --bs-nav-pills-link-active-bg: var(--bs-white) bg-light">
+        <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-white rounded-5 shadow-sm text-black text-bold" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-White); --bs-nav-pills-link-active-color: var(--bs-white); --bs-nav-pills-link-active-bg: var(--bs-white) bg-white">
             
             <li class="nav-item h6" role="presentation">
             <a class="nav-link rounded-5 " href="{$URL_BASE}/home">Home</a>

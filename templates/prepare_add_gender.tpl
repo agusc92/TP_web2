@@ -15,7 +15,7 @@
        
         </div>
         
-        <button type="submit" class="btn btn-danger">Agregar</button>
+        <button type="submit" class="btn btn-light">Agregar</button>
       </form>
     </div>
   </div>

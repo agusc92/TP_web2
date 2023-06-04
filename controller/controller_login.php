@@ -16,7 +16,8 @@ class controller_login{
     }
 
     function show_login(){
-        $this->view->show_login($title);
+
+        $this->view->show_login($this->title);
 
     }
 

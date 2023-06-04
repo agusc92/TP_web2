@@ -34,7 +34,7 @@
         </div>
         <input type="hidden" name="movie_id" value="{$movie->id_movie}"></input>
         <input type="hidden" name="old_gender" value="{$movie->id_gender}"></input>
-        <button type="submit" class="btn btn-danger">Enviar</button>
+        <button type="submit" class="btn btn-light">Enviar</button>
       </form>
     </div>
   </div>

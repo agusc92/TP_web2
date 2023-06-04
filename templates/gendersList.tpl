@@ -5,13 +5,13 @@
     <div class="container mt-4 ">
     
     <ul class="list-group ">
-    <li class="list-group-item bg-danger text-white ">
+    <li class="list-group-item bg-white text-dark ">
           <div class="row">
             <div class="col-3">Genero</div>
             <div class="col-2">Cantidad</div>
             <div class="col-4">Proximos Estrenos</div>
            
-            <div class="col-3"> <button type="button" class="btn btn-danger border border-white"> <a href="{$URL_BASE}/prepare_add_gender"> Agregar Genero</a></button></div>
+            <div class="col-3"> <button type="button" class="btn btn-white border border-white"> <a href="{$URL_BASE}/prepare_add_gender"> Agregar Genero</a></button></div>
           </div>
           </li>
       {foreach $genders as $gender}
@@ -30,7 +30,7 @@
     </div>
 
     <div class="container mb=2">
-    <button type="button" class="btn btn-danger"> <a href="{$URL_BASE}/prepare_add_gender"> Agregar Genero</a></button>
+    <button type="button" class="btn btn-white bg-white"> <a class="text-black" href="{$URL_BASE}/prepare_add_gender"> Agregar Genero</a></button>
     </div>
 </div>
 

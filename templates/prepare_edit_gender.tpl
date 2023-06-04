@@ -14,7 +14,7 @@
         </div>
         <input type="hidden" name="amount" value="{$gender->amount}"></input>
         <input type="hidden" name="id_gender" value="{$gender->id_gender}"></input>
-        <button type="submit" class="btn btn-danger">Enviar</button>
+        <button type="submit" class="btn btn-light">Enviar</button>
       </form>
     </div>
   </div>
