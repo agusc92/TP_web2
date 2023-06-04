@@ -30,8 +30,8 @@
   </div>
 
 </div>
-<div class="container boton-agregar"> <a href="{$URL_BASE}/add"
-    class="gap-2 p-1 small bg-body rounded-5 shadow-sm text-dark ">agregar nueva
+<div class="container boton-agregar "> <a href="{$URL_BASE}/add"
+    class="p-3 small bg-body rounded-5 shadow-sm text-dark ">agregar nueva
     pelicula</a></div>
 
 {include file="footer.tpl"}
