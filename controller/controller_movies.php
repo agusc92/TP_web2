@@ -19,7 +19,15 @@ class controller_movies{
     function home(){
         $genders= $this->model-> get_genders();
         $movies= $this->model->get_movies();
-        $this->view-> mostrar($this->title, $genders, $movies);
+        $aux=[];
+        if(count($movies)<=10){
+            $this->view-> mostrar($this->title, $genders, $movies);
+        }else{
+            for($i=0;$i<10;$i++){
+                $aux[]=$movies[$i];
+            }
+            $this->view->mostrar($this->title, $genders, $aux);
+        }
     }
     function moviesList()
     {

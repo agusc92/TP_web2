@@ -38,7 +38,9 @@
     text-decoration: none;
     color:white;
   }
-
+.logo-container{
+  margin-left: 25px;
+}
   h1{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }

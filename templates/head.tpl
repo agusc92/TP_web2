@@ -16,8 +16,11 @@
         
    
     <nav class="navbar navbar-light bg-dark bg-opacity-70">
-    <h1 class="navbar-brand"></h1>
-      
+    
+    <a class="navbar-brand text-white logo-container" href="{$URL_BASE}/home">
+    <img src="{$URL_BASE}/media/logo-peli.png" width="40" height="40" alt=""><span
+        class="logo-span">MasPelis</span>
+</a>
     <div <div class="col-7">
         
     
@@ -33,7 +36,7 @@
             <a class="nav-link rounded-5" href="{$URL_BASE}/gendersList"  >Generos</a>
             </li>
             <li class="nav-item h6" role="presentation">
-            <button class="nav-link rounded-5"   >Login</button>
+            <button class="nav-link rounded-5"   ><a href="{$URL_BASE}/login" class="text-dark">Login</a></button>
             </li>
             
         </ul>
