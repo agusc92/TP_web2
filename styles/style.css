@@ -34,9 +34,13 @@
     opacity: 0.5;
     color: black;
   }
-  a,label, li{
+  a,label,p,h5,.card-title{
     text-decoration: none;
     color:white;
+  }
+  .tarjeta{
+    font-size: 1.5em;
+    padding: 30px 15% 0 15%;
   }
 .logo-container{
   margin-left: 25px;

@@ -28,10 +28,11 @@
         
         {foreach from=$movies item=movie}
         <div class="col">
-          <div class="card">
-            <img src={$movie->movie_image}" class="card-img-center " alt="...">
-           
-          </div>
+        <a href="{$URL_BASE}/movieDetail/{$movie->id_movie}">
+        <div class="card">
+<img src={$movie->movie_image}" class="card-img-center " alt="...">
+      </div>
+    </a>
         </div>
         
         {/foreach}
