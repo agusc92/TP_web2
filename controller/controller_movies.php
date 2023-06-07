@@ -2,8 +2,9 @@
 
 include_once "./model/model_movies.php";
 include_once "./view/view_movies.php";
+include_once "./controller/controller_secured.php";
 
-class controller_movies{
+class controller_movies extends controller_secured{
 
     private $view;
     private $model;
@@ -11,12 +12,14 @@ class controller_movies{
 
     function __construct()
     {
+        parent::__construct();
         $this->view= new view_movies();
         $this ->model= new model_movies();
         $this ->title= "MasPeli";
     }
 
     function home(){
+
         $genders= $this->model-> get_genders();
         $movies= $this->model->get_movies();
         $aux=[];
@@ -31,8 +34,15 @@ class controller_movies{
     }
     function moviesList()
     {
+        session_start();
+        if(isset ($_SESSION['user'])){
         $movies = $this->model->get_all();
         $this->view->moviesList($movies);
+        }else{
+            header('location:'.URL_LOGIN);
+
+    }
+
     }
 
     function movieDetail($id){

@@ -3,7 +3,11 @@ include 'model/model_movies.php';
 include 'controller/controller_movies.php';
 include 'controller/controller_genders.php';
 include_once 'controller/controller_login.php';
+include_once 'controller/controller_secured.php';
 define('URL_BASE', 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']));
+define('URL_LOGIN', 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/login');
+define('URL_LOGOUT', 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/logout');
+
 
 $controller_movies= new controller_movies();
 $controller_genders= new controller_genders();
@@ -59,7 +63,9 @@ switch($parteURL[0]){
     case 'login':
             $controller_login->show_login();
         break;
-
+    case 'verify_login':
+            $controller_login->verify_login();
+            break;
     default:
         $controller_movies->home();
     }

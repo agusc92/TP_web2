@@ -21,6 +21,31 @@ class controller_login{
 
     }
 
+    function verify_login(){
+        $user= $_POST['name_user'];
+        $pass= $_POST['password'];
+        $dbuser=$this->model->get_user($user);
+       
+        if(isset($dbuser)){
+           
+            if (password_verify($pass,$dbuser->password)){
+                session_start();
+               $_SESSION['user']=$user;
+               header('location:'.URL_BASE);
+              
+        }else{
+            
+            $this->view->show_login($this->title,"Usuario o contraseña incorrecta");
+
+        }
+    }
+
+
+    }
+
+
+
+
 
 }
 ?>

@@ -22,7 +22,6 @@ function get_genders(){
 function get_gender($id){
     $sentense = $this->db->prepare("SELECT * FROM genders WHERE id_gender = ?");
     $sentense->execute([$id]);
-    echo "hola";
     return $sentense->fetch(PDO::FETCH_OBJ);
 }
 

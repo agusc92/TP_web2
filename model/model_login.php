@@ -13,5 +13,15 @@ public function __construct(){
 }
 
 
+function get_user($user){
+    $sentence=$this->db->prepare("SELECT* from users WHERE name_user=? ");
+    $sentence->execute(array($user));
+    return $sentence->fetch(PDO::FETCH_OBJ);
+
+}
+
+
+
+
 }
 ?>
