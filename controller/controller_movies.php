@@ -4,7 +4,7 @@ include_once "./model/model_movies.php";
 include_once "./view/view_movies.php";
 include_once "./controller/controller_secured.php";
 
-class controller_movies extends controller_secured{
+class controller_movies {
 
     private $view;
     private $model;
@@ -12,7 +12,7 @@ class controller_movies extends controller_secured{
 
     function __construct()
     {
-        parent::__construct();
+        
         $this->view= new view_movies();
         $this ->model= new model_movies();
         $this ->title= "MasPeli";
