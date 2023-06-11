@@ -14,13 +14,11 @@ class controller_login{
         $this ->model= new model_login();
         $this ->title= "MasPeli";
     }
-
     function show_login(){
 
         $this->view->show_login($this->title,'');
 
     }
-    
     function verify_user($post){
         $user= $post['name_user'];
         $pass= $post['password'];
@@ -39,8 +37,6 @@ class controller_login{
         destroy();
         $this->view->show_login($this->title,'');
     }
-
-
 
 
 }
