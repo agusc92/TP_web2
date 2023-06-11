@@ -3,7 +3,7 @@
 include_once "./model/model_movies.php";
 include_once "./model/model_genders.php";
 include_once "./view/view_genders.php";
-
+include_once "controller_secured.php";
 class controller_genders{
 
     private $view;
@@ -26,6 +26,7 @@ class controller_genders{
     }
 
     function prepare_add_gender(){
+        wall();
         $this->view->prepare_add_gender();
     }
 
@@ -34,6 +35,7 @@ class controller_genders{
         $this->model->add_gender($gender);
     }
     function prepare_edit_gender($id){
+        wall();
         $gender = $this->model->get_gender($id);      
         $this->view->prepare_edit_gender($gender);
     }

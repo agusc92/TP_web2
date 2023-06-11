@@ -1,23 +1,37 @@
 <?php
-
-class controller_secured{
-
-    
-
-    function __construct()
+session_start();
+    function verify_user($user,$pass,$dbuser)
     {
         
-        session_start();
-        if(isset ($_SESSION['user'])){
-        
+        if (password_verify($pass,$dbuser->password)){
+            
+           $_SESSION['user']=$user;
+           $_SESSION['loged']=true;
+           
+           
+          
+    }else{
+        $_SESSION['loged']=false;
+       
+    }
+   
+    }
+    function wall(){
+        if(!isset($_SESSION['loged'])){
+            header('location:'.URL_BASE.'/login');
+        }
+    }
+    function get_loged(){
+        if(!isset($_SESSION['loged'])){
+            return false;
         }else{
-            header('location:'.URL_LOGIN);
-
-
-
+            return $_SESSION['loged'];
+        }
+        
     }
-
+    
+    function destroy(){
+        session_destroy();
     }
-}
 
 ?>

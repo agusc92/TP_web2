@@ -3,8 +3,10 @@
 include_once "./model/model_movies.php";
 include_once "./view/view_movies.php";
 include_once "./controller/controller_secured.php";
+include_once "./controller/controller_login.php";
 
-class controller_movies extends controller_secured{
+
+class controller_movies{
 
     private $view;
     private $model;
@@ -12,36 +14,26 @@ class controller_movies extends controller_secured{
 
     function __construct()
     {
-        parent::__construct();
+        
         $this->view= new view_movies();
         $this ->model= new model_movies();
         $this ->title= "MasPeli";
     }
 
     function home(){
-
+        
         $genders= $this->model-> get_genders();
-        $movies= $this->model->get_movies();
-        $aux=[];
-        if(count($movies)<=10){
-            $this->view-> mostrar($this->title, $genders, $movies);
-        }else{
-            for($i=0;$i<10;$i++){
-                $aux[]=$movies[$i];
-            }
-            $this->view->mostrar($this->title, $genders, $aux);
-        }
+        $movies= $this->model->get_home_movies();
+        
+        $this->view->mostrar($this->title, $genders, $movies,get_loged());
+        
     }
     function moviesList()
     {
-        session_start();
-        if(isset ($_SESSION['user'])){
+  
         $movies = $this->model->get_all();
-        $this->view->moviesList($movies);
-        }else{
-            header('location:'.URL_LOGIN);
-
-    }
+        $this->view->moviesList($movies,get_loged());
+        
 
     }
 
@@ -59,19 +51,21 @@ class controller_movies extends controller_secured{
         header('location:'.URL_BASE.'/movieList');
     }
     function movieXgender($id){
-        $movies = $this->model->get_all();
-        $show=[];
-        foreach($movies as $movie){
-            if($movie->id_gender == $id){
-                $show[]=$movie;
-            }
-        }
-        $this->view->movieXgender($show);
+        $movies = $this->model->movieXgender($id);
+        // $show=[];
+        // foreach($movies as $movie){
+        //     if($movie->id_gender == $id){
+        //         $show[]=$movie;
+        //     }
+        // }
+        $this->view->movieXgender($movies,get_loged());
         
     }
     function prepare_add_movie(){
+        wall();
         $genders = $this->model->get_genders();
         $this->view->prepare_add_movie($genders);
+        
     }
     function add_movie($datos){
        $movie=[$datos['movie_name'],$datos['image'],$datos['id_gender'],$datos['date'],$datos['synopsis']];
@@ -80,6 +74,7 @@ class controller_movies extends controller_secured{
     }
    
     function prepare_edit_movie($id){
+        wall();
         $movie = $this->model->get_movie($id);
         $gender = $this->model->get_genders();
         $this->view->prepare_edit_movie($movie,$gender);

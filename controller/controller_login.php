@@ -1,7 +1,7 @@
 <?php
 include_once "./model/model_login.php";
 include_once "./view/view_login.php";
-
+include_once 'controller/controller_secured.php';
 class controller_login{
 
     private $view;
@@ -17,32 +17,28 @@ class controller_login{
 
     function show_login(){
 
-        $this->view->show_login($this->title);
+        $this->view->show_login($this->title,'');
 
     }
-
-    function verify_login(){
-        $user= $_POST['name_user'];
-        $pass= $_POST['password'];
+    
+    function verify_user($post){
+        $user= $post['name_user'];
+        $pass= $post['password'];
         $dbuser=$this->model->get_user($user);
-       
-        if(isset($dbuser)){
-           
-            if (password_verify($pass,$dbuser->password)){
-                session_start();
-               $_SESSION['user']=$user;
-               header('location:'.URL_BASE);
-              
+        if(!empty($dbuser->name_user)){
+        verify_user($user,$pass,$dbuser);
+        
+        if(get_loged()){
+            header('location:'.URL_BASE);
         }else{
-            
-            $this->view->show_login($this->title,"Usuario o contraseña incorrecta");
-
+            $this->view->show_login($this->title,'Contraseña incorrecta');
         }
+        }else{ $this->view->show_login($this->title,'usuario incorrecto');}
     }
-
-
+    function log_out(){
+        destroy();
+        $this->view->show_login($this->title,'');
     }
-
 
 
 

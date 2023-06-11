@@ -23,13 +23,30 @@ function get_movies(){
     $sentense = $this->db->prepare("SELECT * FROM movies");
     $sentense->execute();
     return $sentense->fetchAll(PDO::FETCH_OBJ);
-
-
+}
+function get_home_movies(){
+    $sentense = $this->db->prepare("SELECT * FROM movies");
+    $sentense->execute();
+    $movies = $sentense->fetchAll(PDO::FETCH_OBJ);
+    $aux=[];
+        if(count($movies)<=10){
+           $aux = $movies;
+        }else{
+            for($i=0;$i<10;$i++){
+                $aux[]=$movies[$i];
+            }
+        }
+    return $aux;
 }
 function get_all(){
     //trae las tablas de genero y peliculas unidas
     $sentense = $this->db->prepare("SELECT * FROM `movies`JOIN `genders` ON genders.id_gender = movies.id_gender");
     $sentense->execute();
+    return $sentense->fetchAll(PDO::FETCH_OBJ);
+}
+function movieXgender($id){
+    $sentense = $this->db->prepare("SELECT * FROM `movies`JOIN `genders` ON genders.id_gender = movies.id_gender WHERE movies.id_gender = ?");
+    $sentense->execute([$id]);
     return $sentense->fetchAll(PDO::FETCH_OBJ);
 }
 function get_movieDetail($id){
