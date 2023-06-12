@@ -11,13 +11,14 @@ class controller_movies{
     private $view;
     private $model;
     private $title;
-
+    private $controller_secured;
     function __construct()
     {
-        
-        $this->view= new view_movies();
+        $this->controller_secured = new controller_secured();
+        $this->view= new view_movies($this->controller_secured->get_loged());
         $this ->model= new model_movies();
         $this ->title= "MasPeli";
+        
     }
 
     function home(){
@@ -25,14 +26,14 @@ class controller_movies{
         $genders= $this->model-> get_genders();
         $movies= $this->model->get_home_movies();
         
-        $this->view->mostrar($this->title, $genders, $movies,get_loged());
+        $this->view->mostrar($this->title, $genders, $movies);
         
     }
     function moviesList()
     {
   
         $movies = $this->model->get_all();
-        $this->view->moviesList($movies,get_loged());
+        $this->view->moviesList($movies);
         
 
     }
@@ -45,6 +46,7 @@ class controller_movies{
 
 
     function delete_movie($id){
+        $this->controller_secured->wall();
         $datos = $this->model->get_movie($id);
         $this->model->delete_movie($id);
         $this->amount_update($datos->id_gender);
@@ -58,29 +60,30 @@ class controller_movies{
         //         $show[]=$movie;
         //     }
         // }
-        $this->view->movieXgender($movies,get_loged());
+        $this->view->movieXgender($movies);
         
     }
     function prepare_add_movie(){
-        wall();
+        $this->controller_secured->wall();
         $genders = $this->model->get_genders();
         $this->view->prepare_add_movie($genders);
         
     }
     function add_movie($datos){
+        $this->controller_secured->wall();
        $movie=[$datos['movie_name'],$datos['image'],$datos['id_gender'],$datos['date'],$datos['synopsis']];
         $this->model->add_movie($movie);
         $this->amount_update($datos['id_gender']);
     }
    
     function prepare_edit_movie($id){
-        wall();
+        $this->controller_secured->wall();
         $movie = $this->model->get_movie($id);
         $gender = $this->model->get_genders();
         $this->view->prepare_edit_movie($movie,$gender);
     }
     function edit_movie($datos){
-        
+        $this->controller_secured->wall();
         $movie = [$datos['movie_name'],$datos['image'],$datos['id_gender'],$datos['date'],$datos['synopsis'],$datos['movie_id']];
         $this->model->edit_movie($movie);
         $this->amount_update($datos['id_gender']);
@@ -88,6 +91,7 @@ class controller_movies{
         header('location:'.URL_BASE.'/movieList');
     }
     private function amount_update($id){
+        $this->controller_secured->wall();
         $movies = $this->model->get_movies();
         $cont=0;
         foreach($movies as $movie ){

@@ -7,10 +7,11 @@ class controller_login{
     private $view;
     private $model;
     private $title;
-
+    private $controller_secured;
     function __construct()
     {
-        $this->view= new view_login();
+        $this->controller_secured = new controller_secured();
+        $this->view= new view_login($this->controller_secured->get_loged());
         $this ->model= new model_login();
         $this ->title= "MasPeli";
     }
@@ -24,9 +25,9 @@ class controller_login{
         $pass= $post['password'];
         $dbuser=$this->model->get_user($user);
         if(!empty($dbuser->name_user)){
-        verify_user($user,$pass,$dbuser);
+            $this->controller_secured->verify_user($user,$pass,$dbuser);
         
-        if(get_loged()){
+        if($this->controller_secured->get_loged()){
             header('location:'.URL_BASE);
         }else{
             $this->view->show_login($this->title,'Contraseña incorrecta');
@@ -34,7 +35,7 @@ class controller_login{
         }else{ $this->view->show_login($this->title,'usuario incorrecto');}
     }
     function log_out(){
-        destroy();
+        $this->controller_secured->destroy();
         $this->view->show_login($this->title,'');
     }
 

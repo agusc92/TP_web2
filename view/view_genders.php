@@ -1,12 +1,12 @@
 <?php
 require_once './libs/Smarty.class.php';
-include_once "./controller/controller_login.php";
+
 class view_genders
 {
     private $smarty;
-    function __construct(){
+    function __construct($loged){
         $this->smarty = new Smarty();
-        $this->smarty->assign('loged',get_loged());
+        $this->smarty->assign('loged',$loged);
         $this->smarty->assign('URL_BASE',URL_BASE);
     }
     
@@ -17,7 +17,7 @@ class view_genders
     }
 
     function prepare_add_gender(){
-        echo "hola";
+        
         $this->smarty->display('templates/prepare_add_gender.tpl');
 
     }
