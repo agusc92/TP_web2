@@ -1,23 +1,26 @@
 {include file="head.tpl"}
 <div class="container mt-5 bg-dark">
   <div class="row justify-content-center">
-  <h3 class="text-bold text-white text-center">Agregar pelicula</h3>
+    <h3 class="text-bold text-white text-center">Agregar pelicula</h3>
+    {if $error}
+      <h5 class="text-bold text-white text-center">No se permiten campos vacios</h5>
+    {/if}
     <div class="col-6">
       <form method="post" action="{$URL_BASE}/add_confirm">
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="name" name="movie_name" placeholder="las aventuras de web 2">
-        </div >
+        </div>
         <div class="mb-3">
           <label for="image" class="form-label">Imagen</label>
           <input type="text" class="form-control" id="image" name="image" placeholder="Inserte link hacia una imagen">
         </div>
         <div class="mb-3">
           <label for="gender" class="form-label">Genero</label>
-          <select  class="form-control" id="gender" name="id_gender">
-          {foreach $genders as $gender}
-          <option value="{$gender->id_gender}">{$gender->name_gender}</option>
-          {/foreach}
+          <select class="form-control" id="gender" name="id_gender">
+            {foreach $genders as $gender}
+              <option value="{$gender->id_gender}">{$gender->name_gender}</option>
+            {/foreach}
           </select>
         </div>
         <div class="mb-3">
@@ -26,9 +29,10 @@
         </div>
         <div class="mb-3">
           <label for="synopsis" class="form-label">Sinopsis</label>
-          <textarea class="form-control" id="synopsis" name="synopsis" placeholder="Una breve sinopsis de la pelicula"></textarea>
+          <textarea class="form-control" id="synopsis" name="synopsis"
+            placeholder="Una breve sinopsis de la pelicula"></textarea>
         </div>
-        
+
         <button type="submit" class="btn btn-light">Agregar</button>
       </form>
     </div>

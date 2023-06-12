@@ -22,6 +22,7 @@ class controller_secured{
         $this->start();
         if(!isset($_SESSION['loged'])){
             header('location:'.URL_BASE.'/login');
+            DIE();
         }
     }
     function get_loged(){

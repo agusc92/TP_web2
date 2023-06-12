@@ -1,16 +1,21 @@
 {include file="head.tpl"}
 <div class="container mt-5 bg-dark">
   <div class="row justify-content-center">
-  <h3 class="text-bold text-white text-center">Editar Genero</h3>
+    <h3 class="text-bold text-white text-center">Editar Genero</h3>
+    {if $error}
+      <h5 class="text-bold text-white text-center">No se admiten campos vacios</h5>
+    {/if}
     <div class="col-6">
-      <form  method="post" action="{$URL_BASE}/edit_gender">
+      <form method="post" action="{$URL_BASE}/edit_gender">
         <div class="mb-3">
           <label for="name" class="form-label">Genero</label>
-          <input type="text" value="{$gender->name_gender}" class="form-control" id="name" name="name_gender" placeholder="">
-        </div >
+          <input type="text" value="{$gender->name_gender}" class="form-control" id="name" name="name_gender"
+            placeholder="">
+        </div>
         <div class="mb-3">
           <label for="prox_estreno" class="form-label">Proximo Estreno</label>
-          <input type="text" value="{$gender->prox_estreno}" class="form-control" id="prox_estreno" name="prox_estreno" placeholder="">
+          <input type="text" value="{$gender->prox_estreno}" class="form-control" id="prox_estreno" name="prox_estreno"
+            placeholder="">
         </div>
         <input type="hidden" name="amount" value="{$gender->amount}"></input>
         <input type="hidden" name="id_gender" value="{$gender->id_gender}"></input>
