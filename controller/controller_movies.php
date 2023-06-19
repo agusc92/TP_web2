@@ -4,10 +4,10 @@ include_once "./model/model_movies.php";
 include_once "./view/view_movies.php";
 include_once "./controller/controller_secured.php";
 include_once "./controller/controller_login.php";
-
+include_once "./model/model_genders.php";
 
 class controller_movies{
-
+    private $model_genders;
     private $view;
     private $model;
     private $title;
@@ -17,13 +17,13 @@ class controller_movies{
         $this->controller_secured = new controller_secured();
         $this->view= new view_movies($this->controller_secured->get_loged());
         $this ->model= new model_movies();
+        $this->model_genders = new model_genders();
         $this ->title= "MasPeli";
-        
     }
 
     function home(){
         
-        $genders= $this->model-> get_genders();
+        $genders= $this->model_genders-> get_genders();
         $movies= $this->model->get_home_movies();
         if(empty($movies)){
             header('location:'.ULR_BASE);
@@ -48,8 +48,6 @@ class controller_movies{
         }else{
             $this->view->show_movieDetail($movie);
         }
-        
-      
     }
     function delete_movie($id){
         $this->controller_secured->wall();
@@ -71,7 +69,7 @@ class controller_movies{
     }
     function prepare_add_movie(){
         $this->controller_secured->wall();
-        $genders = $this->model->get_genders();
+        $genders = $this->model_genders->get_genders();
         
         $this->view->prepare_add_movie($genders);
         
@@ -81,7 +79,7 @@ class controller_movies{
        $movie=[$datos['movie_name'],$datos['image'],$datos['id_gender'],$datos['date'],$datos['synopsis']];
        foreach($movie as $dato){
         if(empty($dato)){
-            $genders = $this->model->get_genders();
+            $genders = $this->model_genders->get_genders();
         $this->view->prepare_add_movie($genders,true);
         DIE();
         }
@@ -93,13 +91,13 @@ class controller_movies{
     function prepare_edit_movie($id){
         $this->controller_secured->wall();
         $movie = $this->model->get_movie($id);
-        $gender = $this->model->get_genders();
+        $gender = $this->model_genders->get_genders();
         $this->view->prepare_edit_movie($movie,$gender);
     }
     function edit_movie($datos){
         $this->controller_secured->wall();
         $movie = [$datos['movie_name'],$datos['image'],$datos['id_gender'],$datos['date'],$datos['synopsis'],$datos['movie_id']];
-        $genders = $this->model->get_genders();
+        $genders = $this->model_genders->get_genders();
         foreach($movie as $clave=>$valor){
             if(empty($valor)){
                 $movie = $this->model->get_movie($datos['movie_id']);                
@@ -121,7 +119,7 @@ class controller_movies{
                 $cont ++;
             }
         }
-        $this->model->gender_update($cont,$id);
+        $this->model_genders->gender_update($cont,$id);
     }
 }
 

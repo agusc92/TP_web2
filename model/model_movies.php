@@ -12,12 +12,7 @@ public function __construct(){
     }
 }
 
-function get_genders(){
-    //trae la tabla de generos
-    $sentense=$this->db->prepare("SELECT * from genders");
-    $sentense->execute();
-    return $sentense-> fetchAll(PDO::FETCH_OBJ);
-}
+
 function get_movies(){
     //trae la tabla de peliculas
     $sentense = $this->db->prepare("SELECT * FROM movies");
