@@ -44,7 +44,8 @@ class controller_movies{
         
         if(empty($movie)){
             $movies = $this->model->get_all();
-            $this->view->moviesList($movies,true);
+            $error = 'La pelicula no existe';
+            $this->view->moviesList($movies,$error);
         }else{
             $this->view->show_movieDetail($movie);
         }
@@ -52,20 +53,26 @@ class controller_movies{
     function delete_movie($id){
         $this->controller_secured->wall();
         $datos = $this->model->get_movie($id);
-        $this->model->delete_movie($id);
-        $this->amount_update($datos->id_gender);
-        header('location:'.URL_BASE.'/movieList');
+        $movies = $this->model->get_all();
+        if(!empty($datos)){
+            $this->model->delete_movie($id);
+            $this->amount_update($datos->id_gender);
+            $this->view->moviesList($movies);
+        }else{
+            $error = 'no se puede borrar';
+            $this->view->moviesList($movies,$error);
+        }
+        
     }
     function movieXgender($id){
         $movies = $this->model->movieXgender($id);
-        // $show=[];
-        // foreach($movies as $movie){
-        //     if($movie->id_gender == $id){
-        //         $show[]=$movie;
-        //     }
-        // }
-        $this->view->movieXgender($movies);
-        
+       if(empty($movies)){
+        $this->model_genders->get_genders();
+        $error = 'Lo sentimos, no hay pelicuals disponibles';
+        $this->view->moviesList($movies,$error);
+       }else{
+        $this->view->moviesList($movies);
+       }
     }
     function prepare_add_movie(){
         $this->controller_secured->wall();
@@ -77,13 +84,25 @@ class controller_movies{
     function add_movie($datos){
         $this->controller_secured->wall();
        $movie=[$datos['movie_name'],$datos['image'],$datos['id_gender'],$datos['date'],$datos['synopsis']];
+       $movies_db=$this->model->get_all();
+       $genders = $this->model_genders->get_genders();
+
+       foreach($movies_db as $movie_db){
+        if($movie_db->movie_name == $movie[0]){
+            $error = 'La pelicula ya existe';
+            $this->view->prepare_add_movie($genders,$error);
+            DIE();
+        }
+       }
        foreach($movie as $dato){
         if(empty($dato)){
-            $genders = $this->model_genders->get_genders();
-        $this->view->prepare_add_movie($genders,true);
+           
+            $error = 'No se permiten campos vacios';
+            $this->view->prepare_add_movie($genders,$error);
         DIE();
         }
        }
+       
         $this->model->add_movie($movie);
         $this->amount_update($datos['id_gender']);
     }
@@ -92,16 +111,33 @@ class controller_movies{
         $this->controller_secured->wall();
         $movie = $this->model->get_movie($id);
         $gender = $this->model_genders->get_genders();
-        $this->view->prepare_edit_movie($movie,$gender);
+        $movies = $this->model->get_all();
+        if(empty($movie)){
+            $error = 'La pelicula que intenta editar no existe';
+            $this->view->moviesList($movies,$error);
+        }else{
+            $this->view->prepare_edit_movie($movie,$gender);
+        }  
     }
+
     function edit_movie($datos){
         $this->controller_secured->wall();
         $movie = [$datos['movie_name'],$datos['image'],$datos['id_gender'],$datos['date'],$datos['synopsis'],$datos['movie_id']];
         $genders = $this->model_genders->get_genders();
+        $movies_db=$this->model->get_all();
+        foreach($movies_db as $movie_db){
+            if($movie_db->movie_name == $movie[0]){
+                $error = 'La pelicula ya existe';
+                $this->view->moviesList($movies_db,$error);
+                
+                DIE();
+            }
+           }
         foreach($movie as $clave=>$valor){
             if(empty($valor)){
-                $movie = $this->model->get_movie($datos['movie_id']);                
-                $this->view->prepare_edit_movie($movie,$genders,true);
+                $movie = $this->model->get_movie($datos['movie_id']);  
+                $error='No se admiten campos vacios';              
+                $this->view->prepare_edit_movie($movie,$genders,$error);
             DIE();
             }
            }
@@ -119,7 +155,7 @@ class controller_movies{
                 $cont ++;
             }
         }
-        $this->model_genders->gender_update($cont,$id);
+        $this->model->gender_update($cont,$id);
     }
 }
 

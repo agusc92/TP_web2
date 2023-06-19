@@ -2,9 +2,9 @@
 <div class="container-fluid bg-dark d-flex justify-content-center">
   <div class="col-10 bg-dark mt-3 ">
     <h3 class="text-bold text-white text-left">Peliculas</h3>
-    {if $error==true}
-      <h5 class="text-bold text-white text-left">La pelicla no existe, intente otra vez</h5>
-    {/if}
+
+    <h5 class="text-bold text-white text-left">{$mensaje}</h5>
+
     <div class="container mt-4 ">
 
       <ul class="list-group ">

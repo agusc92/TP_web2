@@ -2,9 +2,9 @@
 <div class="container mt-5 bg-dark">
   <div class="row justify-content-center">
     <h3 class="text-bold text-white text-center">Agregar pelicula</h3>
-    {if $error}
-      <h5 class="text-bold text-white text-center">No se permiten campos vacios</h5>
-    {/if}
+
+    <h5 class="text-bold text-white text-center">{$mensaje}</h5>
+
     <div class="col-6">
       <form method="post" action="{$URL_BASE}/add_confirm">
         <div class="mb-3">
