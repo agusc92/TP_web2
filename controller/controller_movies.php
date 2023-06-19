@@ -57,7 +57,7 @@ class controller_movies{
         if(!empty($datos)){
             $this->model->delete_movie($id);
             $this->amount_update($datos->id_gender);
-            $this->view->moviesList($movies);
+            header('location:'.URL_BASE.'/movieList');
         }else{
             $error = 'no se puede borrar';
             $this->view->moviesList($movies,$error);

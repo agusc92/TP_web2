@@ -10,12 +10,12 @@
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input type="text" value="{$movie->movie_name}" class="form-control" id="name" name="movie_name"
-            placeholder="las aventuras de web 2">
+            placeholder="las aventuras de web 2" required>
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Imagen</label>
           <input type="text" value="{$movie->movie_image}" class="form-control" id="image" name="image"
-            placeholder="Inserte link hacia una imagen">
+            placeholder="Inserte link hacia una imagen" required>
         </div>
         <div class="mb-3">
           <label for="gender" class="form-label">Genero</label>
@@ -32,12 +32,12 @@
         <div class="mb-3">
           <label for="date" class="form-label">Año de lanzamiento</label>
           <input type="number" value="{$movie->movie_date}" class="form-control" id="date" name="date"
-            placeholder="1995">
+            placeholder="1995" required>
         </div>
         <div class="mb-3">
           <label for="synopsis" class="form-label">Sinopsis</label>
-          <textarea class="form-control" id="synopsis" name="synopsis"
-            placeholder="Una breve sinopsis de la pelicula">{$movie->synopsis}</textarea>
+          <textarea class="form-control" id="synopsis" name="synopsis" placeholder="Una breve sinopsis de la pelicula"
+            required>{$movie->synopsis}</textarea>
         </div>
         <input type="hidden" name="movie_id" value="{$movie->id_movie}"></input>
         <input type="hidden" name="old_gender" value="{$movie->id_gender}"></input>

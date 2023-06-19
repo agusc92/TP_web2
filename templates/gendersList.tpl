@@ -2,6 +2,7 @@
 <div class="container-fluid bg-dark d-flex justify-content-center">
   <div class="col-10 bg-dark mt-3 ">
     <h3 class="text-bold text-white text-lesft">Listas de Generos</h3>
+    <h5 class="text-bold text-white text-lesft">{$mensaje}</h5>
     <div class="container mt-4 ">
 
       <ul class="list-group ">
@@ -18,7 +19,8 @@
         {foreach $genders as $gender}
           <li class="list-group-item bg-dark text-white hover-effect ">
             <div class="row">
-              <div class="col-3 ">{$gender->name_gender}</div>
+              <div class="col-3 "><a href="{URL_BASE}/movieXgender/{$gender->id_gender}">{$gender->name_gender}</a>
+              </div>
               <div class="col-2">{$gender->amount}</div>
               <div class="col-4 ">{$gender->prox_estreno}</div>
               {if $loged == true}

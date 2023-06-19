@@ -9,11 +9,13 @@
       <form method="post" action="{$URL_BASE}/add_confirm">
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="name" name="movie_name" placeholder="las aventuras de web 2">
+          <input type="text" class="form-control" id="name" name="movie_name" placeholder="las aventuras de web 2"
+            required>
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Imagen</label>
-          <input type="text" class="form-control" id="image" name="image" placeholder="Inserte link hacia una imagen">
+          <input type="text" class="form-control" id="image" name="image" placeholder="Inserte link hacia una imagen"
+            required>
         </div>
         <div class="mb-3">
           <label for="gender" class="form-label">Genero</label>
@@ -25,12 +27,12 @@
         </div>
         <div class="mb-3">
           <label for="date" class="form-label">Año de lanzamiento</label>
-          <input type="number" class="form-control" id="date" name="date" placeholder="1995">
+          <input type="number" class="form-control" id="date" name="date" placeholder="1995" required>
         </div>
         <div class="mb-3">
           <label for="synopsis" class="form-label">Sinopsis</label>
-          <textarea class="form-control" id="synopsis" name="synopsis"
-            placeholder="Una breve sinopsis de la pelicula"></textarea>
+          <textarea class="form-control" id="synopsis" name="synopsis" placeholder="Una breve sinopsis de la pelicula"
+            required></textarea>
         </div>
 
         <button type="submit" class="btn btn-light">Agregar</button>
